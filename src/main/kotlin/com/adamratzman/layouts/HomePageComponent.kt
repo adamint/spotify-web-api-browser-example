@@ -63,7 +63,6 @@ class HomePageComponent(parent: Container) : SiteStatefulComponent(parent = pare
                         delay(500)
                         val newCurrentPlayerStateDiv = Div()
                         with(newCurrentPlayerStateDiv) {
-                            println("here2")
                             val currentlyPlayingState = api.player.getCurrentlyPlaying()
 
                             when (currentlyPlayingState?.isPlaying) {
@@ -77,9 +76,7 @@ class HomePageComponent(parent: Container) : SiteStatefulComponent(parent = pare
                             }
 
                             if (currentlyPlayingState?.isPlaying != null) {
-                                println("here3")
                                 player.getCurrentState().then { playbackState ->
-                                    println(playbackState)
                                     val currentTrack = playbackState?.track_window?.current_track
                                     if (currentTrack != null) {
                                         labelWithBoldedValue(
