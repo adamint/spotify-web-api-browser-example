@@ -11,7 +11,8 @@ What this shows:
 You can also use this application as a template to develop your own applications!
 
 ### Running
-./gradlew run
+`./gradlew run` or `./gradlew.bat run` on windows
+Please then go to http://localhost:3000 - you will be prompted to log into Spotify
 
 ### Examining the code
 Please see src/main/kotlin/com/adamratzman/layouts/HomePageComponent.kt for the actual player instantiation.
