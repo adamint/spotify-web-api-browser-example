@@ -16,3 +16,7 @@ You can also use this application as a template to develop your own applications
 ### Examining the code
 Please see src/main/kotlin/com/adamratzman/layouts/HomePageComponent.kt for the actual player instantiation.
 src/main/kotlin/com/adamratzman/security/AuthUtils.kt shows you how to guard against unauthenticated access
+
+
+### Screenshots
+<img src="https://i.imgur.com/RnOsem8.png" />
