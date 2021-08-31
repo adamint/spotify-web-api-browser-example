@@ -22,4 +22,5 @@ src/main/kotlin/com/adamratzman/security/AuthUtils.kt shows you how to guard aga
 
 ### Working example
 This example shows player updates through starting/stopping client (app) and browser (playback sdk) playback.
+
 https://user-images.githubusercontent.com/20359921/131540810-f31716b6-5393-41bf-8aaa-19efb7d015ce.mov
