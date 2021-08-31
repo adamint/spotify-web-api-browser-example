@@ -10,6 +10,8 @@ if (config.devServer) {
 // disable bundle size warning
 config.performance = {
     assetFilter: function (assetFilename) {
-        return !assetFilename.endsWith('.js');
+      return !assetFilename.endsWith('.js');
     },
 };
+
+config.output["publicPath"] = '';

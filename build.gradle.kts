@@ -62,7 +62,7 @@ kotlin {
         implementation("io.kvision:kvision-print:$kvisionVersion")
         implementation("io.kvision:kvision-routing-navigo:$kvisionVersion")
         implementation("io.kvision:kvision-redux:$kvisionVersion")
-        implementation("com.adamratzman:spotify-api-kotlin-js:3.8.2-SNAPSHOT-local")
+        implementation("com.adamratzman:spotify-api-kotlin-js:3.8.3")
     }
     sourceSets["test"].dependencies {
         implementation(kotlin("test-js"))

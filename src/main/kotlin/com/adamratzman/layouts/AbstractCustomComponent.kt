@@ -2,7 +2,7 @@ package com.adamratzman.layouts
 
 import com.adamratzman.database.SiteManager
 import com.adamratzman.database.SiteState
-import com.adamratzman.utils.addCssClasses
+import com.adamratzman.utils.nameSetOf
 import kotlinx.browser.document
 import org.w3c.dom.get
 import io.kvision.core.Container
@@ -37,9 +37,8 @@ abstract class AbstractCustomComponent<S>(
         parent: Container? = null,
         buildComponent: (Container.() -> Unit)? = null,
         buildStatefulComponent: (Container.(S) -> Unit)? = null
-) : Div(content, rich, align) {
+) : Div(content, rich, align, nameSetOf(classes)) {
     init {
-        this.addCssClasses(classes)
         bindState?.let {
             bind(it, true) { state -> buildStatefulComponent?.invoke(this, state); if (state is SiteState) setTitle(state.view.name) }
         } ?: buildComponent?.invoke(this)

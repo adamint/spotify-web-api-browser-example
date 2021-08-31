@@ -8,7 +8,6 @@ import com.adamratzman.spotify.webplayer.WebPlaybackInstance
 import com.adamratzman.utils.UikitName.MarginAuto
 import com.adamratzman.utils.UikitName.MarginMediumTop
 import com.adamratzman.utils.UikitName.WidthTwoThirds
-import com.adamratzman.utils.addCssClasses
 import com.adamratzman.utils.addLineBreak
 import com.adamratzman.utils.labelWithBoldedValue
 import com.adamratzman.utils.nameSetOf
@@ -21,16 +20,17 @@ import io.kvision.html.h4
 import io.kvision.html.h5
 import io.kvision.html.p
 import kotlinx.browser.localStorage
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@DelicateCoroutinesApi
 class HomePageComponent(parent: Container) : SiteStatefulComponent(parent = parent, buildStatefulComponent = { state ->
     guardValidSpotifyApi(state) { api ->
         lateinit var playerDeviceId: String
 
-        div {
-            addCssClasses(nameSetOf(MarginMediumTop, WidthTwoThirds, MarginAuto))
+        div(className = nameSetOf(MarginMediumTop, WidthTwoThirds, MarginAuto)) {
             h4("Spotify api has been instantiated.")
             GlobalScope.launch {
                 p("User: ${api.getUserId()}")
@@ -41,7 +41,9 @@ class HomePageComponent(parent: Container) : SiteStatefulComponent(parent = pare
                     object : PlayerInit {
                         override var name: String = "spotify-web-api-kotlin browser example player"
                         override var volume: Number? = 0.5f
-                        override fun getOAuthToken(cb: (token: String) -> Unit) {
+                        override var getOAuthToken: ((String) -> Unit) -> Unit = { cb ->
+                            println("here!")
+                            println(cb)
                             // cannot reference outer closures within an override fun! otherwise we'd just call api
                             cb(localStorage.getItem(lastSpotifyAccessToken)!!)
                         }

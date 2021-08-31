@@ -74,7 +74,7 @@ fun siteStateReducer(state: SiteState, action: SiteAction): SiteState = when (ac
     LoadHomePage -> state.copy(view = Home)
     LoadNotFoundPage -> state.copy(view = NotFound)
     is SetSpotifyApi -> {
-        localStorage[spotifyTokenLocalStorageKey] = Json.encodeToString(action.token)
+        localStorage[spotifyTokenLocalStorageKey] = Json.encodeToString(Token.serializer(), action.token)
         localStorage[spotifyTokenExpiryLocalStorageKey] = action.token.expiresAt.toString()
         state
     }

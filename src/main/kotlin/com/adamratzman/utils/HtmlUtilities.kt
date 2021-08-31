@@ -2,27 +2,25 @@ package com.adamratzman.utils
 
 import com.adamratzman.database.SiteState
 import com.adamratzman.database.isDevServer
-import kotlinx.browser.document
-import kotlinx.browser.window
-import kotlinx.dom.removeClass
-import org.w3c.dom.asList
-import org.w3c.dom.url.URLSearchParams
-import io.kvision.core.*
+import io.kvision.core.Component
+import io.kvision.core.Container
+import io.kvision.core.Widget
 import io.kvision.html.Div
 import io.kvision.html.Tag
 import io.kvision.html.b
 import io.kvision.html.p
 import io.kvision.html.textNode
+import kotlinx.browser.document
+import kotlinx.browser.window
+import kotlinx.dom.removeClass
+import org.w3c.dom.asList
+import org.w3c.dom.url.URLSearchParams
 
 fun Component.addAttributes(vararg attributePairs: Pair<Any, Any?>) {
     attributePairs.forEach { setAttribute(it.first.toString(), it.second?.toString() ?: "") }
 }
 
-fun Component.addCssClasses(vararg classes: Any) {
-    //classes.forEach { addCssClass(it.toString()) }
-}
-
-fun nameSetOf(vararg name: Any) = name.map { it.toString() }.toSet()
+fun nameSetOf(vararg name: Any) = name.map { it.toString() }.joinToString(" ")
 
 fun String.prependSpace() = " $this"
 
@@ -50,7 +48,9 @@ fun showLoadingSpinner(state: SiteState) {
     state.loadingDiv?.show()
 }
 
-fun getSearchParams() = URLSearchParams(if (!window.location.search.isBlank()) window.location.search  else window.location.hash.substringAfter("?"))
+fun getSearchParams() = URLSearchParams(
+    if (!window.location.search.isBlank()) window.location.search else window.location.hash.substringAfter("?")
+)
 
 /*
 window.matchMedia("only screen and (max-width: 760px)").matches;
@@ -64,7 +64,11 @@ fun fixDropdownMobile() {
     }
 }
 
-fun Container.selectOuterContainerIfMobile(mobileContainer: Container, desktopContainer: Container, inner: Container.() -> Unit) {
+fun Container.selectOuterContainerIfMobile(
+    mobileContainer: Container,
+    desktopContainer: Container,
+    inner: Container.() -> Unit
+) {
     add(
         if (isMobile()) mobileContainer.apply(inner)
         else desktopContainer.apply(inner)
