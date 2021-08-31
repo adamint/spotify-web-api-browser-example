@@ -1,3 +1,5 @@
+
+
 ## spotify-web-api-kotlin browser example
 This example application integrates with the Spotify REST API, as well as the Spotify Web Playback SDK, to interactively
 play content via the browser. To play content, you need a Spotify premium subscription!
@@ -18,5 +20,6 @@ Please see src/main/kotlin/com/adamratzman/layouts/HomePageComponent.kt for the 
 src/main/kotlin/com/adamratzman/security/AuthUtils.kt shows you how to guard against unauthenticated access
 
 
-### Screenshots
-<img src="https://i.imgur.com/RnOsem8.png" />
+### Working example
+This example shows player updates through starting/stopping client (app) and browser (playback sdk) playback.
+https://user-images.githubusercontent.com/20359921/131540810-f31716b6-5393-41bf-8aaa-19efb7d015ce.mov
